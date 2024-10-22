@@ -34,7 +34,7 @@
    cd lastmile_painel
    npm install
 
-3. Configure as variáveis de ambiente no arquivo .env com os seguintes parametros:
+3. Configure as variáveis de ambiente na pasta src/environments o arquivo environments.ts com os seguintes parametros:
    ```bash
    base_url: para a rota utilizada pela api
    google_maps_key: chave publica do google_maps para utilização da integração.
@@ -83,6 +83,37 @@
 3. Crie ou inicie uma conexão no MySQL Workbench
 
 4. Execute o script Lastmile.sql
+
+## Detalhes de Criação
+
+1. Usuario deverá ser cadastrado na tela de cadastro
+   ```bash
+   Ex: http://localhost:4200/signup
+
+2. Entregador deverá ser cadastrado internamente através da api/documentação seguindo os detalhes de criação
+   ```bash
+   POST http://localhost:3000/usuarios
+   type: 2
+
+## Imagens da plataforma
+
+Tela de Login
+![image](https://github.com/user-attachments/assets/08c5cc53-7e64-4f8d-8a9c-ff5985f90b5e)
+
+Tela de Cadastro
+![image](https://github.com/user-attachments/assets/30153470-6e67-4a61-8cb9-a92aeb03f9fa)
+
+Dashboard Principal
+![image](https://github.com/user-attachments/assets/381cc360-5c0c-4055-903f-50db78b2f84c)
+
+Tela de Pedidos do Cliente
+![image](https://github.com/user-attachments/assets/786c58c2-fffa-4bc0-ab62-db1082541929)
+
+Tela de Entregas Disponíveis do Entregador
+![image](https://github.com/user-attachments/assets/cbb2cb78-a217-4a3a-a8bf-95f98fbb23ff)
+
+Modal de Cadastro de Pedidos
+![image](https://github.com/user-attachments/assets/05ca9df5-abcb-4245-98c3-a23f7ece0c13)
 
 ## Development server
 
