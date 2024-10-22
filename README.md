@@ -66,7 +66,7 @@
    ```bash
    npm run start:dev
 
-## Como Acessa a documentação do Backend
+## Como Acessar a documentação do Backend
 
 1. Acesse a base_url definida na rota /api/docs
    ```bash
