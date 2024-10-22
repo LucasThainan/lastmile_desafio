@@ -30,13 +30,14 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
   }
 
   handleDisconnect(client: Socket) {
-    let user = this.connections.find((v: any) => v.socket_id == client.id)
+    let index = this.connections.findIndex((v: any) => v?.socket_id == client.id)
+    if (index == -1) return
 
-    if (user.type === '2') {
-      this.server.emit('entregador_disconnected', { cod_entregador: user.cod_entregador })
+    if (this.connections[index].type === '2') {
+      this.server.emit('entregador_disconnected', { cod_entregador: this.connections[index].cod_entregador })
     }
 
-    delete this.connections[client.id]
+    delete this.connections[index]
   }
 
   pedidoCreatedNotifier(@MessageBody() pedido: Pedido) {
@@ -54,7 +55,7 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
 
     this.connections.forEach((value: any) => {
       if (value.id_usuario === pedido.cod_user) {
-        this.server.to(value.socket_id).emit('pedido_entregador_updated', response)
+        this.server.to(value.socket_id).emit('pedido_status_updated', response)
       }
     })
 
@@ -77,7 +78,7 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
         }
 
         if (value.id_usuario === pedido.cod_user) {
-          this.server.to(value.socket_id).emit('pedido_entregador_updated', response)
+          this.server.to(value.socket_id).emit('pedido_status_updated', response)
         }
       })
     }
@@ -85,7 +86,7 @@ export class WebsocketGateway implements OnGatewayConnection, OnGatewayDisconnec
 
   @SubscribeMessage('set_location')
   setLocation(@MessageBody() payload: any) {
-    let index = this.connections.findIndex(((v: any) => v.socket_id == payload.socket_id))
+    let index = this.connections.findIndex(((v: any) => v?.socket_id == payload.socket_id))
     if (index == -1) return
 
     this.connections[index].lat = String(payload.lat)
