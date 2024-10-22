@@ -66,9 +66,15 @@
    ```bash
    npm run start:dev
 
+## Como Acessa a documentação do Backend
+
+1. Acesse a base_url definida na rota /api/docs
+   ```bash
+   Ex: http://localhost:3000/api/docs
+
 ## Como Executar o Backend Localmente
 
-1. Acesse o a pasta mysql
+1. Acesse a pasta mysql
    ```bash
    cd mysql
 
